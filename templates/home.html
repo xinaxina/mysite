@@ -1,0 +1,167 @@
+{% extends 'base_home.html' %}
+{% load staticfiles %}
+
+{% block title %}首页{% endblock %}
+
+{% block content %}
+    <div class="section" id="section2">
+        <div class="fp-tablecell">
+            <div class="page2">
+                <div class="warp-box">
+                    <div class="new-article">
+                        <div class="inner wow fadeInDown" data-wow-delay=".2s">
+                            <h1>热门文章</h1>
+                        </div>
+                    </div>
+                    <div class="layui-row">
+                        <div class="layui-col-xs12 layui-col-sm4 layui-col-md4  wow fadeInUp" style="padding: 0 10px">
+                            <div class="single-news">
+                                {% for hot_blog in hot_blogs_for_7_days %}
+                                <div class="news-head">
+                                    <img src="static/image/1.jpg">
+                                    <a href="{% url 'blog_detail' hot_blog.id %}" class="link"><i class="fa fa-link"></i></a>
+                                </div>
+                                <ul>
+                                </ul>
+                                <div class="news-content">
+                                    <h4>
+                                        <a href="{% url 'blog_detail' hot_blog.id %}">
+                                            {{ hot_blog.title }}
+                                        </a>
+                                    </h4>
+                                    <div class="date">
+                                        七日内最热门文章
+                                    </div>
+                                    <p>
+                                        很想给你写封信,告诉你这里的天气. 昨夜的那场电影,还有我的心情.
+                                    </p>
+                                    <a href="{% url 'blog_detail' hot_blog.id %}" class="btn">
+                                        阅读更多
+                                    </a>
+                                </div>
+                                    {% empty %}
+                                <div class="news-head">
+                                    <img src="static/image/1.jpg">
+                                    <a class="link"><i class="fa fa-link"></i></a>
+                                </div>
+                                <ul>
+                                </ul>
+                                <div class="news-content">
+                                    <h4>
+                                        <a>
+                                            七日内暂时没有热门博客
+                                        </a>
+                                    </h4>
+                                    <div class="date">
+                                        七日内最热门文章
+                                    </div>
+                                    <p>
+                                        很想给你写封信,告诉你这里的天气. 昨夜的那场电影,还有我的心情.
+                                    </p>
+                                    <a class="btn">
+                                        七日内暂时没有热门博客
+                                    </a>
+                                </div>
+                                    {% endfor %}
+                            </div>
+                        </div>
+                        <div class="layui-col-xs12 layui-col-sm4 layui-col-md4  wow fadeInUp" data-wow-delay=".2s" style="padding: 0 10px">
+                            <div class="single-news">
+                                {% for hot_data in yesterday_hot_data %}
+                                <div class="news-head">
+                                    <img src="static/image/1.jpg">
+                                    <a href="{% url 'blog_detail' hot_data.content_object.pk %}" class="link"><i class="fa fa-link"></i></a>
+                                </div>
+                                <div class="news-content">
+                                    <h4>
+                                        <a href="{% url 'blog_detail' hot_data.content_object.pk %}">
+                                            {{ hot_data.content_object.title }}
+                                        </a>
+                                    </h4>
+                                    <div class="date">
+                                        昨日最热门文章
+                                    </div>
+                                    <p>
+                                        很想给你写封信,告诉你这里的天气. 昨夜的那场电影,还有我的心情.
+                                    </p>
+                                    <a href="{% url 'blog_detail' hot_data.content_object.pk %}" class="btn">
+                                        阅读更多
+                                    </a>
+                                </div>
+                                {% empty %}
+                                <div class="news-head">
+                                    <img src="static/image/1.jpg">
+                                    <a class="link"><i class="fa fa-link"></i></a>
+                                </div>
+                                <div class="news-content">
+                                    <h4>
+                                        <a>
+                                             昨天暂时没有热门博客
+                                        </a>
+                                    </h4>
+                                    <div class="date">
+                                        昨日最热门文章
+                                    </div>
+                                    <p>
+                                        很想给你写封信,告诉你这里的天气. 昨夜的那场电影,还有我的心情.
+                                    </p>
+                                    <a  class="btn">
+                                         昨天暂时没有热门博客
+                                    </a>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="layui-col-xs12 layui-col-sm4 layui-col-md4  wow fadeInUp" data-wow-delay=".4s" style="padding: 0 10px">
+                            <div class="single-news">
+                                {% for hot_data in today_hot_data %}
+                                <div class="news-head">
+                                    <img src="static/image/1.jpg">
+                                    <a href="{% url 'blog_detail' hot_data.content_object.pk %}" class="link"><i class="fa fa-link"></i></a>
+                                </div>
+                                <div class="news-content">
+                                    <h4>
+                                        <a href="{% url 'blog_detail' hot_data.content_object.pk %}">
+                                            {{ hot_data.content_object.title }}
+                                        </a>
+                                    </h4>
+                                    <div class="date">
+                                        今日最热门文章
+                                    </div>
+                                    <p>
+                                        很想给你写封信,告诉你这里的天气. 昨夜的那场电影,还有我的心情.
+                                    </p>
+                                    <a href="{% url 'blog_detail' hot_data.content_object.pk %}" class="btn">
+                                        阅读更多
+                                    </a>
+                                </div>
+                                {% empty %}
+                                <div class="news-head">
+                                    <img src="static/image/1.jpg">
+                                    <a class="link"><i class="fa fa-link"></i></a>
+                                </div>
+                                <div class="news-content">
+                                    <h4>
+                                        <a>
+                                            今天暂时没有热门博客
+                                        </a>
+                                    </h4>
+                                    <div class="date">
+                                        今日最热门文章
+                                    </div>
+                                    <p>
+                                        很想给你写封信,告诉你这里的天气. 昨夜的那场电影,还有我的心情.
+                                    </p>
+                                    <a class="btn">
+                                        今天暂时没有热门博客
+                                    </a>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
